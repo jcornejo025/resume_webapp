@@ -1,26 +1,176 @@
-@import "tailwindcss";
-
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --page-bg: #76A6AA; /* light blue*/
+  --window-panel: #C3CABA;
+  --font-color: #6E6962;
+  --navbar-font-color: #443554;
+  --header-color: #6EAA78;
+  
+  --bevel-bg: #9A9A97;
+  --bevel-light: #D3E0BB;
+  --bevel-dark: #6E6962;
+  --default-border: 6px solid;
+  --nav-height-btn: 48px;
+  --nav-bar-padding: 6px;
+  --font-size: 32px;
+  --nav-bar-gap: 10px;
+  
+  --about-me-padding: 50px;
+  --profile-padding: 20px;
+  --about-me-font-size: 45px;
+
+  --font-family: 'Pixelify Sans', sans-serif;
+  --letter-spacing: 2px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html,body {
+  height: 100%;
+  margin: 0;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+button {
+  font-family: inherit;
+  color: var(--navbar-font-color);
+  background: var(--bevel-bg);
+  border-top: var(--bevel-light) var(--default-border);
+  border-left: var(--bevel-light) var(--default-border);
+  border-bottom: var(--bevel-dark) var(--default-border);
+  border-right: var(--bevel-dark) var(--default-border);
+  height: var(--nav-height-btn);
+  
+  font-size: var(--font-size);
+  letter-spacing: var(--letter-spacing);
 }
-
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-family);
+  color: var(--font-color);
+}
+main {
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.background {
+  background: var(--page-bg);
+  min-height: 100vh;
+}
+
+.pixel-img {
+  /* cross-browser crispness */
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+
+#start-btn {
+  width: 180px;
+}
+
+#about-me-btn {
+  width: 294px;
+}
+
+#clock-shadow {
+  margin-left: auto;
+  height: var(--nav-height-btn);
+  width: 4px;
+  background: var(--bevel-dark);
+}
+
+#clock-bevel {
+  margin-right: 30px;
+  height: 36px;
+  padding: 0 8px;
+
+  font-size: var(--font-size);
+  letter-spacing: var(--letter-spacing);
+  color: var(--navbar-font-color);
+  border-top: var(--bevel-dark) var(--default-border);
+  border-left: var(--bevel-dark) var(--default-border);
+  border-bottom: var(--bevel-light) var(--default-border);
+  border-right: var(--bevel-light) var(--default-border);
+}
+
+.bevel-navbar {
+  background: var(--bevel-bg);
+  border-top: var(--bevel-light) var(--default-border);
+  height: 80px;
+  position: fixed;
+  display: flex;
+  gap: var(--nav-bar-gap);
+  padding-left: var(--nav-bar-padding);
+  justify-content: flex-start;
+  align-items: center;
+  bottom: 0;
+  width: 100%;
+}
+/*TODO: make it interactive! user can drag window*/
+#about-me-window {
+  position: absolute;
+  top: var(--about-me-padding);
+  bottom: calc(var(--nav-height-btn) + 80px);
+  right: var(--about-me-padding);
+  z-index: 10;
+
+  width: 500px;
+  overflow: auto;
+
+  background: var(--window-panel);
+  border-right: var(--bevel-dark) var(--default-border);
+  border-bottom: var(--bevel-dark) var(--default-border);
+}
+
+#about-me-navbar {
+  position: relative;
+  margin: 4px 4px;
+  width: calc(100% - 4px);
+  height: 60px;
+  background: var(--header-color);
+  border-bottom: var(--bevel-dark) var(--default-border);
+
+  font-size: var(--about-me-font-size);
+  padding-right: 50px;
+}
+
+#profile-block {
+  position: relative;
+  width: calc(100% - 40px);
+  height: 160px;
+  display: flex;
+  align-items: center;
+  gap: var(--nav-bar-gap);
+}
+
+#profile-pic {
+  position: relative;
+  width: 150px;
+  aspect-ratio: 1/1;
+  background-color: var(--navbar-font-color);
+  top: var(--profile-padding);
+  left: var(--profile-padding);
+}
+
+#profile-text {
+  display: flex;
+  flex-direction: column;
+  margin-left: var(--profile-padding);
+  font-size: var(--font-size);
+
+}
+
+#status-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#status-indicator {
+  width: 20px;
+  aspect-ratio: 1/1;
+  background-color: var(--header-color);
+}
+
+#profile-text p {
+  margin: 0;
+  line-height: 1.5;
+  font-size: 30px;
 }
