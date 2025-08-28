@@ -18,7 +18,6 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${pixelifySans.className}`}>
         <div className='background'>
-          <AboutMe />
           <Navbar />
         </div>
       </body>

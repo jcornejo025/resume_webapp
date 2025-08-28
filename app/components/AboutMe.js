@@ -1,7 +1,15 @@
-export default function AboutMe() {
+export default function AboutMe({isVisible}) {
+    const cls = `about-me-window ${isVisible ? "" : "hidden"}`;
+
     return (
-        <div id="about-me-window">
-            <div id="about-me-navbar"> About Me</div>
+        <div id="about-me-window"
+        className={cls} aria-hidden={!isVisible}>
+            <div id="about-me-navbar"> 
+                <p className="title">About Me</p>
+                <div id="header-btns">
+                    <button className="winbtn" aria-label="minimize">✕</button>
+                </div>
+            </div>
             <div id="profile-block">
                 <div id="profile-pic">
                     <img src="/images/avatar-sprite.png"
@@ -17,6 +25,9 @@ export default function AboutMe() {
                         <p>Online</p>
                     </div>
                 </div>
+            </div>
+            <div id="about-me-content">
+
             </div>
         </div>
     )

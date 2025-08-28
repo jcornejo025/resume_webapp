@@ -9,6 +9,7 @@
   --bevel-light: #D3E0BB;
   --bevel-dark: #6E6962;
   --default-border: 6px solid;
+  --winbtn-border: 4px solid;
   --nav-height-btn: 48px;
   --nav-bar-padding: 6px;
   --font-size: 32px;
@@ -38,7 +39,17 @@ button {
   
   font-size: var(--font-size);
   letter-spacing: var(--letter-spacing);
+  cursor: pointer;
 }
+
+button:active {
+  transform: scale(0.98);
+  border-top: var(--bevel-dark) var(--default-border);
+  border-left: var(--bevel-dark) var(--default-border);
+  border-bottom: var(--bevel-light) var(--default-border);
+  border-right: var(--bevel-light) var(--default-border);
+}
+
 body {
   background: var(--background);
   font-family: var(--font-family);
@@ -67,6 +78,14 @@ main {
 
 #about-me-btn {
   width: 294px;
+}
+
+.bevel-pressed-btn {
+  transform: scale(0.98);
+  border-top: var(--bevel-dark) var(--default-border);
+  border-left: var(--bevel-dark) var(--default-border);
+  border-bottom: var(--bevel-light) var(--default-border);
+  border-right: var(--bevel-light) var(--default-border);
 }
 
 #clock-shadow {
@@ -111,24 +130,57 @@ main {
   right: var(--about-me-padding);
   z-index: 10;
 
-  width: 500px;
-  overflow: auto;
+  width: 100%;
+  max-width: 500px;
+  overflow: hidden;
 
   background: var(--window-panel);
   border-right: var(--bevel-dark) var(--default-border);
   border-bottom: var(--bevel-dark) var(--default-border);
 }
 
+#about-me-window.hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;   /* clicks pass through */
+  transition: opacity .15s ease-in-out, visibility 0s linear 0s;
+}
+
 #about-me-navbar {
-  position: relative;
-  margin: 4px 4px;
-  width: calc(100% - 4px);
   height: 60px;
   background: var(--header-color);
   border-bottom: var(--bevel-dark) var(--default-border);
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 4px;
+  padding: 0 8px;
+}
 
+#about-me-navbar .title {
+  margin: 0;
   font-size: var(--about-me-font-size);
-  padding-right: 50px;
+  letter-spacing: var(--letter-spacing, 0);
+  color: var(--font-color);
+}
+
+#header-btns {
+  position: relative;
+  display: flex;
+  gap: 8px;
+}
+
+.winbtn {
+  width: 26px; height: 26px;
+  font: inherit; line-height: 1;
+  color: var(--font-color);
+
+  border-top: var(--bevel-light) var(--winbtn-border);
+  border-left: var(--bevel-light) var(--winbtn-border);
+  border-bottom: var(--bevel-dark) var(--winbtn-border);
+  border-right: var(--bevel-dark) var(--winbtn-border);
+  padding: 0;
 }
 
 #profile-block {
@@ -173,4 +225,11 @@ main {
   margin: 0;
   line-height: 1.5;
   font-size: 30px;
+}
+
+#about-me-content {
+  padding: 0 20px 20px 20px;
+  box-sizing: border-box;
+  font-size: 24px;
+  line-height: 1.5;
 }
