@@ -1,6 +1,5 @@
 import "./globals.css";
 import { Pixelify_Sans } from "next/font/google";
-import AboutMe from "./components/AboutMe";
 import Navbar from "./components/Navbar";
 
 const pixelifySans = Pixelify_Sans({
@@ -16,9 +15,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${pixelifySans.className}`}>
-        <div className='background'>
+      <body className={pixelifySans.className}>
+        <div className="background">
           <Navbar />
+          {children}
         </div>
       </body>
     </html>

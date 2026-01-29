@@ -1,5 +1,8 @@
+/* ==============================
+   Design Tokens
+   ============================== */
 :root {
-  --page-bg: #76A6AA; /* light blue*/
+  --page-bg: #76A6AA; /* light blue */
   --window-panel: #C3CABA;
   --font-color: #6E6962;
   --navbar-font-color: #443554;
@@ -19,14 +22,37 @@
   --profile-padding: 20px;
   --about-me-font-size: 45px;
 
-  --font-family: 'Pixelify Sans', sans-serif;
+  --font-family: "Pixelify Sans", sans-serif;
   --letter-spacing: 2px;
 }
 
-html,body {
+/* ==============================
+   Base
+   ============================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
   height: 100%;
   margin: 0;
+  padding: 0;
 }
+
+body {
+  background: var(--page-bg);
+  font-family: var(--font-family);
+  color: var(--font-color);
+}
+
+main {
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
 button {
   font-family: inherit;
   color: var(--navbar-font-color);
@@ -42,44 +68,7 @@ button {
   cursor: pointer;
 }
 
-button:active {
-  transform: scale(0.98);
-  border-top: var(--bevel-dark) var(--default-border);
-  border-left: var(--bevel-dark) var(--default-border);
-  border-bottom: var(--bevel-light) var(--default-border);
-  border-right: var(--bevel-light) var(--default-border);
-}
-
-body {
-  background: var(--background);
-  font-family: var(--font-family);
-  color: var(--font-color);
-}
-main {
-  min-height: 100vh;
-  box-sizing: border-box;
-}
-
-.background {
-  background: var(--page-bg);
-  min-height: 100vh;
-}
-
-.pixel-img {
-  /* cross-browser crispness */
-  image-rendering: pixelated;
-  image-rendering: crisp-edges;
-}
-
-
-#start-btn {
-  width: 180px;
-}
-
-#about-me-btn {
-  width: 294px;
-}
-
+button:active,
 .bevel-pressed-btn {
   transform: scale(0.98);
   border-top: var(--bevel-dark) var(--default-border);
@@ -88,14 +77,42 @@ main {
   border-right: var(--bevel-light) var(--default-border);
 }
 
-#clock-shadow {
+/* ==============================
+   Layout
+   ============================== */
+.background {
+  background: var(--page-bg);
+  min-height: 100vh;
+}
+
+/* ==============================
+   Media Helpers
+   ============================== */
+.pixel-img {
+  /* cross-browser crispness */
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* ==============================
+   Navbar
+   ============================== */
+.start-btn {
+  width: 180px;
+}
+
+.about-me-btn {
+  width: 294px;
+}
+
+.clock-shadow {
   margin-left: auto;
   height: var(--nav-height-btn);
   width: 4px;
   background: var(--bevel-dark);
 }
 
-#clock-bevel {
+.clock-bevel {
   margin-right: 30px;
   height: 36px;
   padding: 0 8px;
@@ -122,8 +139,12 @@ main {
   bottom: 0;
   width: 100%;
 }
-/*TODO: make it interactive! user can drag window*/
-#about-me-window {
+
+/* ==============================
+   About Me Window
+   ============================== */
+/* TODO: make it interactive! user can drag window */
+.about-me-window {
   position: absolute;
   top: var(--about-me-padding);
   bottom: calc(var(--nav-height-btn) + 80px);
@@ -139,14 +160,14 @@ main {
   border-bottom: var(--bevel-dark) var(--default-border);
 }
 
-#about-me-window.hidden {
+.about-me-window.hidden {
   visibility: hidden;
   opacity: 0;
-  pointer-events: none;   /* clicks pass through */
-  transition: opacity .15s ease-in-out, visibility 0s linear 0s;
+  pointer-events: none; /* clicks pass through */
+  transition: opacity 0.15s ease-in-out, visibility 0s linear 0s;
 }
 
-#about-me-navbar {
+.about-me-navbar {
   height: 60px;
   background: var(--header-color);
   border-bottom: var(--bevel-dark) var(--default-border);
@@ -158,14 +179,14 @@ main {
   padding: 0 8px;
 }
 
-#about-me-navbar .title {
+.about-me-navbar .title {
   margin: 0;
   font-size: var(--about-me-font-size);
   letter-spacing: var(--letter-spacing, 0);
   color: var(--font-color);
 }
 
-#header-btns {
+.header-btns {
   position: relative;
   display: flex;
   gap: 8px;
@@ -183,7 +204,7 @@ main {
   padding: 0;
 }
 
-#profile-block {
+.profile-block {
   position: relative;
   width: calc(100% - 40px);
   height: 160px;
@@ -192,7 +213,7 @@ main {
   gap: var(--nav-bar-gap);
 }
 
-#profile-pic {
+.profile-pic {
   position: relative;
   width: 150px;
   aspect-ratio: 1/1;
@@ -201,35 +222,113 @@ main {
   left: var(--profile-padding);
 }
 
-#profile-text {
+.profile-text {
   display: flex;
   flex-direction: column;
   margin-left: var(--profile-padding);
   font-size: var(--font-size);
-
 }
 
-#status-container {
+.status-container {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-#status-indicator {
+.status-indicator {
   width: 20px;
   aspect-ratio: 1/1;
   background-color: var(--header-color);
 }
 
-#profile-text p {
+.profile-text p {
   margin: 0;
   line-height: 1.5;
   font-size: 30px;
 }
 
-#about-me-content {
-  padding: 0 20px 20px 20px;
+.about-me-content {
+  padding: 0 20px 20px;
   box-sizing: border-box;
   font-size: 24px;
   line-height: 1.5;
+}
+
+.retro-window {
+  background: var(--window-panel);
+  border: 3px solid var(--bevel-dark);
+  box-shadow: 4px 4px 0 var(--bevel-dark);
+  width: 100%;
+}
+
+.retro-titlebar {
+  background: linear-gradient(90deg, var(--navbar-font-color), var(--header-color));
+  color: var(--window-panel);
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 8px;
+  border-bottom: 2px solid var(--bevel-dark);
+}
+
+.retro-title {
+  font-family: var(--font-family);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow:
+    1px 0 0 var(--bevel-dark),
+    0 1px 0 var(--bevel-dark),
+    1px 1px 0 var(--bevel-dark),
+    2px 2px 0 var(--bevel-light);
+}
+
+.retro-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.retro-control-btn {
+  width: 20px;
+  height: 20px;
+  min-height: 20px;
+  font-size: 12px;
+  line-height: 1;
+  padding: 0;
+  background: var(--window-panel);
+  color: var(--font-color);
+  border: 2px solid var(--bevel-dark);
+  letter-spacing: 0;
+}
+
+.retro-menubar {
+  background: var(--bevel-bg);
+  padding: 4px 8px;
+  border-bottom: 2px solid var(--bevel-dark);
+  display: flex;
+  gap: 16px;
+  font-family: var(--font-family);
+  font-size: 14px;
+  color: var(--navbar-font-color);
+}
+
+.retro-content {
+  padding: 16px;
+  background: repeating-linear-gradient(
+    90deg,
+    #f2e9ef 0,
+    #f2e9ef 24px,
+    #eadfe6 24px,
+    #eadfe6 48px
+  );
+}
+
+.retro-content h2 {
+  margin: 0 0 12px;
+  font-size: 28px;
+}
+
+.retro-content p {
+  margin: 0;
+  font-size: 20px;
 }

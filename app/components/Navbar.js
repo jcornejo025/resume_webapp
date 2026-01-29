@@ -26,12 +26,15 @@ export default function Navbar() {
         <>
         <AboutMe isVisible={isPressed}/>
         <div className="bevel-navbar">
-            <button id="start-btn">START</button>
-            <button id="about-me-btn" 
-            className={isPressed ? "bevel-pressed-btn" : ""}
-            onClick={handleClick}>ABOUT ME</button>
-            <div id="clock-shadow"></div>
-            <div id="clock-bevel">{currentTime}</div>
+            <button className="start-btn">START</button>
+            <button
+            className={`about-me-btn ${isPressed ? "bevel-pressed-btn" : ""}`.trim()}
+            onClick={handleClick}
+            >
+              ABOUT ME
+            </button>
+            <div className="clock-shadow"></div>
+            <div className="clock-bevel">{currentTime}</div>
         </div>
         </>
     );
